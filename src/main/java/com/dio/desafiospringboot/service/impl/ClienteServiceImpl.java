@@ -7,6 +7,7 @@ import com.dio.desafiospringboot.entity.Endereco;
 import com.dio.desafiospringboot.repository.ClienteRepository;
 import com.dio.desafiospringboot.repository.EnderecoRepository;
 import com.dio.desafiospringboot.service.ClienteService;
+
 import com.dio.desafiospringboot.service.ViaCepService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ public class ClienteServiceImpl implements ClienteService {
     private ClienteRepository clienteRepository;
     @Autowired
     private EnderecoRepository enderecoRepository;
+
     @Autowired
     private ViaCepService viaCepService;
 
