@@ -1,42 +1,39 @@
 package com.dio.desafiospringboot.service.impl;
 
-import java.util.Optional;
-
 import com.dio.desafiospringboot.entity.Cliente;
 import com.dio.desafiospringboot.entity.Endereco;
+import com.dio.desafiospringboot.entity.Funcionario;
 import com.dio.desafiospringboot.repository.ClienteRepository;
 import com.dio.desafiospringboot.repository.EnderecoRepository;
+import com.dio.desafiospringboot.repository.FuncionarioRepository;
 import com.dio.desafiospringboot.service.ClienteService;
+import com.dio.desafiospringboot.service.FuncionarioService;
 import com.dio.desafiospringboot.service.ViaCepService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
-public class ClienteServiceImpl implements ClienteService {
+public class FuncionarioServiceImpl implements FuncionarioService {
 
-    // Singleton: Injetar os componentes do Spring com @Autowired.
     @Autowired
-    private ClienteRepository clienteRepository;
-    @Autowired
-    private EnderecoRepository enderecoRepository;
-    @Autowired
-    private ViaCepService viaCepService;
+    private FuncionarioRepository funcionarioRepository;
 
-    // Strategy: Implementar os métodos definidos na interface.
-    // Facade: Abstrair integrações com subsistemas, provendo uma interface simples.
+
 
     @Override
-    public Iterable<Cliente> buscarTodos() {
+    public Iterable<Funcionario> buscarTodos() {
         // Buscar todos os Clientes.
-        return clienteRepository.findAll();
+        return funcionarioRepository.findAll();
     }
 
     @Override
-    public Cliente buscarPorId(Long id) {
+    public Funcionario buscarPorId(String matricula) {
         // Buscar Cliente por ID.
-        Optional<Cliente> cliente = clienteRepository.findById(id);
-        return cliente.get();
+        Optional<Funcionario> funcionario = funcionarioRepository.findById(matricula);
+        return funcionario.get();
     }
 
     @Override
