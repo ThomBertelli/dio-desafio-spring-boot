@@ -1,0 +1,14 @@
+package com.dio.desafiospringboot.service;
+
+
+import com.dio.desafiospringboot.entity.Endereco;
+import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@FeignClient(name = "viacep", url = "https://viacep.com.br/ws")
+public interface ViaCepService {
+
+    @GetMapping("/{cep}/json/")
+    Endereco consultarCep(@PathVariable("cep") String cep);
+}
