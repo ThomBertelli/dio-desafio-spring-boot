@@ -1,13 +1,12 @@
 package com.dio.desafiospringboot.service;
 
-import com.dio.desafiospringboot.entity.Cliente;
 import com.dio.desafiospringboot.entity.Funcionario;
 
 public interface FuncionarioService {
 
     Iterable<Funcionario> buscarTodos();
 
-    Cliente buscarPorId(String id);
+    Funcionario buscarPorId(String id);
 
     void inserir(Funcionario funcionario);
 

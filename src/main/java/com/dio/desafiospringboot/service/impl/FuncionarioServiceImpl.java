@@ -37,37 +37,25 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     }
 
     @Override
-    public void inserir(Cliente cliente) {
-        salvarClienteComCep(cliente);
+    public void inserir(Funcionario funcionario) {
+        funcionarioRepository.save(funcionario);
     }
 
     @Override
-    public void atualizar(Long id, Cliente cliente) {
-        // Buscar Cliente por ID, caso exista:
-        Optional<Cliente> clienteBd = clienteRepository.findById(id);
-        if (clienteBd.isPresent()) {
-            salvarClienteComCep(cliente);
+    public void atualizar(String matricula, Funcionario funcionario) {
+
+        Optional<Funcionario> funcionadioBd = funcionarioRepository.findById(matricula);
+        if (funcionadioBd.isPresent()) {
+            funcionarioRepository.save(funcionario);
         }
     }
 
     @Override
-    public void deletar(Long id) {
+    public void deletar(String matricula) {
         // Deletar Cliente por ID.
-        clienteRepository.deleteById(id);
+        funcionarioRepository.deleteById(matricula);
     }
 
-    private void salvarClienteComCep(Cliente cliente) {
-        // Verificar se o Endereco do Cliente já existe (pelo CEP).
-        String cep = cliente.getEndereco().getCep();
-        Endereco endereco = enderecoRepository.findById(cep).orElseGet(() -> {
-            // Caso não exista, integrar com o ViaCEP e persistir o retorno.
-            Endereco novoEndereco = viaCepService.consultarCep(cep);
-            enderecoRepository.save(novoEndereco);
-            return novoEndereco;
-        });
-        cliente.setEndereco(endereco);
-        // Inserir Cliente, vinculando o Endereco (novo ou existente).
-        clienteRepository.save(cliente);
-    }
+
 
 }
