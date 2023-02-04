@@ -25,13 +25,13 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
     @Override
     public Iterable<Funcionario> buscarTodos() {
-        // Buscar todos os Clientes.
+
         return funcionarioRepository.findAll();
     }
 
     @Override
     public Funcionario buscarPorId(String matricula) {
-        // Buscar Cliente por ID.
+
         Optional<Funcionario> funcionario = funcionarioRepository.findById(matricula);
         return funcionario.get();
     }
@@ -52,7 +52,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
     @Override
     public void deletar(String matricula) {
-        // Deletar Cliente por ID.
+
         funcionarioRepository.deleteById(matricula);
     }
 

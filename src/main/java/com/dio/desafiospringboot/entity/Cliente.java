@@ -25,7 +25,7 @@ public class Cliente {
     @ManyToOne
     private Endereco endereco;
 
-    private String cep;
+
 
 
 }
